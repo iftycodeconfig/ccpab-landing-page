@@ -1,0 +1,460 @@
+.codeconfig-header {
+    position: fixed;
+    z-index: 91;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 0;
+    overflow-x: clip;
+
+    @include breakpoint(575) {
+        padding: 22px 0;
+    }
+
+    .header-menu-wrap {
+        .logo-wrapper {
+            @include breakpoint(1024) {
+                width: 100%;
+
+                .bars {
+                    width: 30px;
+                    height: 22px;
+                    cursor: pointer;
+
+                    span {
+                        display: block;
+                        width: 100%;
+                        height: 4px;
+                        border-radius: 5px;
+                        background: $primary;
+                        transition: all 0.3s ease;
+
+                        &:not(:last-child) {
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-header-menu {
+            @extend .d-flex, .align-center, .unstyle;
+            gap: 10px;
+
+            @include breakpoint(1024) {
+                position: absolute;
+                width: 100%;
+                top: var(--only-header-height);
+                right: calc(-100% - 25px);
+                z-index: 1;
+                background: #fff;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 25px 40px;
+                box-shadow: 4px 4px 30px 0px #e0f5ffb2;
+                overflow-y: scroll;
+                gap: 0;
+            }
+
+            @include breakpoint(575) {
+                height: 100vh;
+            }
+
+            li.menu-item {
+                @extend .d-flex, .justify-center;
+
+                @include breakpoint(1024) {
+                    width: 100%;
+                    flex-direction: column;
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid #e0f5ff;
+                    }
+                }
+
+                a {
+                    padding: 10px;
+                    @include font(18, 22);
+                    font-weight: 400;
+                    color: $secondary;
+                    @extend .transition;
+
+                    @include breakpoint(1024) {
+                        width: fit-content;
+                        padding: 15px 10px 15px 0;
+                    }
+                }
+
+                &.current-menu-item {
+                    a {
+                        color: $primary;
+                    }
+                }
+                &:hover {
+                    a {
+                        @include minbreakpoint(1025) {
+                            color: $primary;
+                        }
+                    }
+                }
+
+                &.contact-btn {
+                    padding-left: 35px;
+
+                    @include breakpoint(1280) {
+                        padding-left: 10px;
+                    }
+                    @include breakpoint(1024) {
+                        padding-left: 0;
+                    }
+
+                    a {
+                        background: $primary;
+                        color: #fff !important;
+                        @include font(17, 28);
+                        font-weight: 500;
+                        padding: 6px 14px 6px 6px;
+                        @extend .relative, .d-flex, .align-center, .transition;
+                        gap: 10px;
+                        border-radius: 30px;
+
+                        @include breakpoint(1024) {
+                            margin: 15px auto 0;
+                        }
+
+                        &:hover {
+                            background: #002abd;
+                        }
+
+                        &:before {
+                            content: url(./../images/microphone-icon.svg);
+                            width: 30px;
+                            aspect-ratio: 1 / 1;
+                            line-height: 0;
+                            background: #fff;
+                            border-radius: 100px;
+                            @extend .flex-center;
+                        }
+                    }
+                }
+
+                // Dropdown start
+                &.menu-item-has-children {
+                    @extend .relative;
+
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        border: 0;
+                        border-bottom: 2px;
+                        border-right: 2px;
+                        border-style: solid;
+                        transform: rotate(45deg);
+                        border-color: $secondary;
+                        top: 13px;
+                        right: 10px;
+                        transform-origin: 56% 76%;
+                        @extend .transition;
+
+                        @include breakpoint(1024) {
+                            top: 18px;
+                        }
+                    }
+
+                    a {
+                        @include minbreakpoint(1025) {
+                            padding-right: 27px;
+                        }
+                    }
+
+                    .dropdown-menu {
+                        width: 100%;
+                        padding: 20px;
+                        box-shadow: 4px 4px 30px 0px #e0f5ffb2;
+                        border-radius: 16px;
+                        @extend .relative;
+
+                        @include minbreakpoint(1025) {
+                            position: absolute;
+                            top: 42px;
+                            background: #ffffff;
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: all 0.3s ease;
+                        }
+                        @include breakpoint(1024) {
+                            display: none;
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-left: 15px solid transparent;
+                            border-right: 15px solid transparent;
+                            border-bottom: 15px solid #e0f5ff;
+                            right: calc(50% - 15px);
+                            top: 0;
+                            -webkit-transition: 0.3s;
+                            transition: all 0.3s ease 0s;
+                            z-index: -1;
+                            @extend .transition;
+
+                            @include breakpoint(1024) {
+                                display: none;
+                            }
+                        }
+
+                        .megamenu-column {
+                            ul {
+                                @extend .d-flex, .flex-wrap;
+                                gap: 16px;
+
+                                li.menu-item {
+                                    border: 0;
+
+                                    a {
+                                        gap: 10px;
+                                        padding: 15px;
+                                        border: 1px solid #e0f5ff;
+                                        border-radius: 10px;
+                                        z-index: 1;
+                                        @extend .d-flex, .relative, .transition;
+
+                                        &::after {
+                                            position: absolute;
+                                            content: "";
+                                            width: 100%;
+                                            height: 100%;
+                                            left: 0;
+                                            top: 0;
+                                            background: var(--product-color);
+                                            z-index: -1;
+                                            border-radius: 10px;
+                                            opacity: 0;
+                                            @extend .transition;
+                                        }
+
+                                        &:hover {
+                                            &::after {
+                                                opacity: 0.04;
+                                            }
+                                        }
+
+                                        .image-wrapper {
+                                            width: 50px;
+                                            height: 50px;
+                                            border-radius: 100px;
+                                            @extend .flex-center;
+                                        }
+
+                                        span {
+                                            width: 50%;
+                                            flex-grow: 1;
+                                            @include font(22, 29);
+                                            font-weight: 600;
+                                            color: var(--product-color);
+
+                                            @include breakpoint(1200) {
+                                                @include font(20, 28);
+                                            }
+                                            @include breakpoint(768) {
+                                                @include font(18, 26);
+                                            }
+
+                                            small {
+                                                @include font(12, 18);
+                                                font-weight: 400;
+                                                color: $text;
+                                                display: inline-block;
+                                                margin-top: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &.limited-menu-item {
+                                    li.menu-item {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.active-dopdown-menu {
+                        border-bottom: 0;
+
+                        &::after {
+                            transform: rotate(223deg);
+                            border-color: #476df4;
+                        }
+                    }
+                    &:hover {
+                        &::after {
+                            @include minbreakpoint(1025) {
+                                transform: rotate(223deg);
+                                border-color: #476df4;
+                            }
+                        }
+                        .dropdown-menu {
+                            opacity: 1;
+                            visibility: visible;
+
+                            &::before {
+                                @include minbreakpoint(1025) {
+                                    top: -10px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.one-column-menu {
+                    .dropdown-menu {
+                        max-width: 390px;
+
+                        @include minbreakpoint(1025) {
+                            width: max-content;
+                        }
+                        @include breakpoint(768) {
+                            max-width: 100%;
+                        }
+                        .megamenu-column {
+                            ul {
+                                li.menu-item {
+                                    width: 100%;
+
+                                    a {
+                                        width: 100%;
+                                        align-items: center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.two-column-menu {
+                    .dropdown-menu {
+                        @include minbreakpoint(1025) {
+                            width: max-content;
+                            max-width: 760px;
+                        }
+                        .megamenu-column {
+                            ul {
+                                li.menu-item {
+                                    width: 100%;
+                                    max-width: calc(50% - 8px);
+
+                                    @include breakpoint(768) {
+                                        max-width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Dropdown end
+            }
+        }
+        &.toggle-active {
+            @include breakpoint(1024) {
+                .logo-wrapper {
+                    .bars {
+                        span {
+                            &:first-child {
+                                transform: rotate(45deg);
+                                position: absolute;
+                                top: 10px;
+                            }
+                        }
+                        span {
+                            &:nth-child(2) {
+                                opacity: 0;
+                            }
+                        }
+                        span {
+                            &:last-child {
+                                transform: rotate(-45deg);
+                                position: absolute;
+                                top: 10px;
+                            }
+                        }
+                    }
+                }
+                .main-header-menu {
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    &.sticky {
+        box-shadow: 0px 2px 20px 0px #297afe20;
+        background-color: #ffffff;
+        padding: 20px 0;
+
+        // .main-header-menu {
+
+        // }
+    }
+}
+
+// Sticky style for mobile if Login
+body {
+    &.admin-bar {
+        #wpadminbar {
+            @extend .transition;
+        }
+
+        #countDownTimerSection {
+            top: 32px !important;
+
+            @include breakpoint(782) {
+                top: 46px !important;
+            }
+        }
+
+        #cc-header {
+            top: 32px !important;
+
+            @include breakpoint(782) {
+                top: 46px !important;
+            }
+        }
+        &:has(#countDownTimerSection) {
+            #cc-header {
+                top: var(--header-top-space, 103px) !important;
+            }
+        }
+
+        &.sticky-class {
+            #countDownTimerSection {
+                @include breakpoint(600) {
+                    top: 0 !important;
+                }
+            }
+
+            #cc-header {
+                @include breakpoint(600) {
+                    top: 0 !important;
+                }
+            }
+
+            &:has(#countDownTimerSection) {
+                #cc-header {
+                    @include breakpoint(600) {
+                        top: 77px !important;
+                    }
+                    @include breakpoint(575) {
+                        top: 60px !important;
+                    }
+                }
+            }
+        }
+    }
+}

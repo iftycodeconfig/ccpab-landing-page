@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    font-size: 100%;
+}
+
+html,
+body {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 16px;
+    line-height: 26px;
+    color: $body;
+    font-family: $pop;
+}
+button {
+    font-family: $pop;
+}
+
+/* #####################################
+*          TYPOGRAPHY SETTINGS
+* ##################################### 
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2 {
+    font-size: 44px;
+    line-height: 54px;
+
+    @include breakpoint(1200) {
+        @include font(36, 46);
+    }
+
+    @include breakpoint(1024) {
+        @include font(30, 42);
+    }
+
+    @include breakpoint(768) {
+        @include font(26, 36);
+    }
+}
+
+h3 {
+    @include font(36, 48);
+
+    @include breakpoint(1200) {
+        @include font(32, 44);
+    }
+
+    @include breakpoint(1024) {
+        @include font(28, 38);
+    }
+
+    @include breakpoint(768) {
+        @include font(26, 36);
+    }
+}
+
+h4 {
+    @include font(30, 42);
+
+    @include breakpoint(1024) {
+        @include font(24, 36);
+    }
+
+    @include breakpoint(768) {
+        @include font(20, 32);
+    }
+}
+
+h5 {
+    @include font(26, 36);
+
+    @include breakpoint(1024) {
+        @include font(22, 32);
+    }
+    @include breakpoint(768) {
+        @include font(18, 30);
+    }
+}
+
+h6 {
+    @include font(24, 34);
+
+    @include breakpoint(1024) {
+        @include font(20, 30);
+    }
+    @include breakpoint(768) {
+        @include font(16, 24);
+    }
+}
+
+p {
+    margin-bottom: 20px;
+    font-weight: 400;
+    @include font(16, 26);
+}
+
+img,
+svg {
+    width: 100%;
+    height: auto;
+}
+
+/* #####################################
+*          Common Class
+* ##################################### 
+*/
+
+.cc-section-title {
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: #000000;
+
+        span,
+        strong {
+            color: $primary;
+        }
+    }
+    p {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+// admin style start
+
+.admin-bar {
+    header {
+        top: 32px;
+
+        @include breakpoint(782) {
+            top: 46px;
+        }
+        @include breakpoint(600) {
+            &.sticky {
+                top: 0;
+            }
+        }
+    }
+}
+// admin style end
+
+// Essential style start
+.d-none {
+    display: none !important;
+}
+.d-flex {
+    display: flex;
+}
+.d-grid {
+    display: grid;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right;
+}
+.align-center {
+    align-items: center;
+}
+.align-end {
+    align-items: end;
+}
+.space-between {
+    justify-content: space-between;
+    gap: 10px;
+}
+.justify-content-end {
+    justify-content: flex-end;
+}
+.justify-center {
+    justify-content: center;
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-end {
+    justify-content: end;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+.scroll-off {
+    height: 100%;
+    overflow: hidden;
+}
+.unstyle {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style: none;
+    }
+}
+.margin_bottom-0 {
+    margin-bottom: 0 !important;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.transition {
+    transition: all 0.3s ease;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.mid-align {
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.m-auto {
+    margin: 0 auto;
+}
+.margin-0 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span {
+        margin: 0 !important;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1330px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+.overflow-x-hidden {
+    overflow-x: clip;
+}
+.z-index-plus-1 {
+    z-index: 1;
+}
+.z-index-minus-1 {
+    z-index: -1;
+}
+
+@media only screen and (min-width: 1025px) {
+    .hide-desktop {
+        display: none;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .hide-tab {
+        display: none;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .hide-mobile {
+        display: none;
+    }
+    .text-center-mobile {
+        text-align: center;
+        justify-content: center;
+    }
+}

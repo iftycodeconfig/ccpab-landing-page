@@ -1,0 +1,134 @@
+// Animation Keyframes //
+
+@keyframes textinlinerotate {
+    0% {
+        transform: translateX(-100px) rotate(-90deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100px) rotate(90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes crossupdown {
+    0% {
+        transform: rotate(45deg) translateY(115px);
+        @include breakpoint(575) {
+            transform: rotate(45deg) translateY(25px);
+        }
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(90px);
+        @include breakpoint(575) {
+            transform: rotate(45deg) translateY(35px);
+        }
+    }
+}
+@keyframes crossupdown-mobile {
+    0% {
+        transform: rotate(45deg) translateY(25px);
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(35px);
+    }
+}
+
+@keyframes border-rotation {
+    100% {
+        transform: rotate(0deg);
+    }
+    0% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes icon-motion {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes scroll-watcher {
+    to {
+        scale: 1 1;
+    }
+}
+
+// For new theme
+
+@keyframes cc-pulse-animation {
+    0% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+}
+
+@keyframes cc-pulse-sheet-animation {
+    0% {
+        width: 10px;
+    }
+    100% {
+        width: 50px;
+    }
+}
+@include minbreakpoint(576) {
+    @keyframes cc-pulse-sheet-animation {
+        0% {
+            width: 40px;
+        }
+        100% {
+            width: 85px;
+        }
+    }
+}
+
+@keyframes cc-scroll-button-animation {
+    0% {
+        transform: translate(0, 10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, -10px);
+        opacity: 1;
+    }
+}
+
+@keyframes bgMove {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 90%;
+        opacity: 1;
+    }
+}

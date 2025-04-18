@@ -1,0 +1,36 @@
+// mixin style start
+@mixin breakpoint($max-width) {
+    @media only screen and (max-width: #{$max-width + px}) {
+        @content;
+    }
+}
+
+@mixin minbreakpoint($min-width) {
+    @media only screen and (min-width: #{$min-width + px}) {
+        @content;
+    }
+}
+
+@mixin font($size, $line-height: null) {
+    font-size: #{$size + px};
+
+    @if $line-height != null {
+        line-height: #{$line-height + px};
+    }
+}
+
+@mixin transition(
+    $property: all,
+    $duration: 0.3s,
+    $timing-function: ease,
+    $delay: 0s
+) {
+    transition: $property $duration $timing-function $delay;
+}
+
+@mixin height-width($height, $width: null) {
+    width: 100%;
+    max-width: #{$width + px};
+    height: #{$height + px};
+}
+// mixin style end

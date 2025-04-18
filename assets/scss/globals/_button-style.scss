@@ -1,0 +1,219 @@
+// Common button style
+.cc-btn {
+    @extend .align-center, .relative, .transition;
+    display: inline-flex;
+    border-radius: 100px;
+    padding: 10px;
+    gap: 20px;
+
+    @include breakpoint(575) {
+        grid-area: 10px;
+    }
+
+    .cc-btn-text {
+        @include font(18, 28);
+        font-weight: 500;
+        font-family: $pop;
+        padding: 0 10px;
+
+        @include breakpoint(575) {
+            @include font(16, 25);
+            padding: 0 5px;
+        }
+    }
+
+    &.btn-icon {
+        .cc-btn-icon {
+            @extend .flex-center, .transition;
+            width: 40px;
+            height: 40px;
+            border-radius: 100px;
+
+            @include breakpoint(575) {
+                width: 30px;
+                height: 30px;
+            }
+
+            img {
+                max-width: 17px;
+
+                @include breakpoint(575) {
+                    max-width: 13px;
+                }
+            }
+        }
+    }
+    &.icon-left {
+        flex-direction: row-reverse;
+    }
+
+    &.btn-blue {
+        background: $primary;
+        color: #fff;
+
+        &:hover {
+            background: #002abd;
+        }
+
+        &.btn-icon {
+            .cc-btn-icon {
+                background: #fff;
+            }
+        }
+    }
+
+    &.btn-violet {
+        background: #9448ff;
+        color: #fff;
+
+        &.btn-icon {
+            .cc-btn-icon {
+                background: transparent;
+            }
+        }
+    }
+
+    &.btn-white {
+        background: #fff;
+        color: #000;
+
+        &:hover {
+            background: #b4b4b4;
+        }
+    }
+    &.icon-bg-black {
+        &.btn-icon {
+            .cc-btn-icon {
+                background: #000;
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+    &.icon-rotate {
+        .cc-btn-icon {
+            transform: rotate(0deg);
+        }
+
+        &:hover {
+            .cc-btn-icon {
+                transform: rotate(35deg);
+            }
+        }
+    }
+}
+
+// Small button
+.cc-small-btn {
+    @include font(16, 24);
+    font-weight: 600;
+    background-color: transparent;
+    color: $primary;
+    position: relative;
+    padding-right: 27px;
+
+    &::after {
+        position: absolute;
+        content: "";
+        width: 14px;
+        height: 12px;
+        top: calc(50% - 6px);
+        right: 0;
+        mask: url(./../images/right-arrow.svg);
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: $primary;
+        transform: rotate(0deg);
+        @extend .transition;
+    }
+
+    &:hover {
+        &::after {
+            transform: rotate(35deg);
+        }
+    }
+}
+
+// Subscribe submit button
+
+.submit-subscribe-btn {
+    position: relative;
+    background: white;
+    transition: all 0.3s ease;
+    z-index: 1;
+    border-radius: 50px;
+    color: $primary;
+
+    button[type="submit"],
+    input[type="submit"] {
+        padding: 7px 36px 7px 13px;
+        color: $primary;
+        font-family: Poppins;
+        font-size: 16px;
+        line-height: 26px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0.13px;
+        border-radius: 4px;
+        cursor: pointer;
+        background: transparent;
+
+        @include breakpoint(575) {
+            padding: 8px 12px;
+        }
+    }
+    &:after {
+        position: absolute;
+        top: calc(50% - 8px);
+        right: 16px;
+        z-index: -1;
+        width: 14px;
+        height: 16px;
+        content: "";
+        mask: url(./../images/send-Icon.svg);
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: $primary;
+
+        @include breakpoint(575) {
+            display: none;
+        }
+    }
+    &:hover {
+        background: $secondary;
+        button[type="submit"] {
+            color: #ffffff;
+        }
+        &:after {
+            background-color: #ffffff;
+        }
+    }
+}
+
+// Blog Button
+.cc-blog-button {
+    @include font(19, 28);
+    font-weight: 500;
+    color: #fff;
+    background: $primary;
+    padding: 10px 40px;
+    border-radius: 100px;
+    width: fit-content;
+    display: block;
+    margin: 25px auto 40px;
+    @extend .transition;
+
+    &:hover {
+        background: #002abd;
+    }
+
+    @include breakpoint(768) {
+        @include font(16, 24);
+        margin: 20px auto 30px;
+        padding: 8px 20px;
+    }
+}
