@@ -5,25 +5,22 @@ const rename = require("gulp-rename");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 
-// Paths
-const globalPath = "assets/scss/codeconfig-style.scss"; // Path to global SCSS file
-const outputPath = "assets/css/"; // Output folder for CSS files
+const scssPath = "assets/scss/**/*.scss";
+const entryFile = "assets/scss/codeconfig-style.scss";
+const outputPath = "assets/css/";
 
-// Compile global styles into global.css
 function compileGlobalCSS() {
   return gulp
-    .src(globalPath)
-    .pipe(sass().on("error", sass.logError)) // Compile SCSS to CSS
-    .pipe(postcss([autoprefixer()])) // Add vendor prefixes
-    .pipe(cleanCSS()) // Minify the CSS
-    .pipe(rename({ basename: "codeconfig-style", extname: ".css" })) // Output as global.css
-    .pipe(gulp.dest(outputPath)); // Save to assets folder
+    .src(entryFile)
+    .pipe(sass().on("error", sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(cleanCSS())
+    .pipe(rename({ basename: "codeconfig-style", extname: ".css" }))
+    .pipe(gulp.dest(outputPath));
 }
 
-// Watch for changes and recompile
 function watchSCSS() {
-  gulp.watch(globalPath, compileGlobalCSS);
+  gulp.watch(scssPath, compileGlobalCSS);
 }
 
-// Default task to run
 exports.default = gulp.series(compileGlobalCSS, watchSCSS);
