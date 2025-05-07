@@ -3,12 +3,12 @@
 }
 
 // announcement-bar-variable color
-$primary-color:#050034;
-$secondary-color:#080050;
-$black-color:#000000;
-$blue-color:#8746FF;
-$text-color:#4A4764;
-$white-color:#ffffff;
+$ab-primary:#050034;
+$ab-secondary:#080050;
+$ab-black:#000000;
+$ab-blue:#8746FF;
+$ab-text:#4A4764;
+$ab-white:#ffffff;
 
 // common Class
 
@@ -68,7 +68,7 @@ button{
     position: relative;
     background-color: #8746FF;
     padding: 12px 30px;
-    color: $white-color;
+    color: $ab-white;
     border-radius: 8px;
     border: 0;
     outline: 0;
@@ -111,230 +111,182 @@ button{
 }
 
 
-// ccpab header-area                       
-.ccpab-header-area{
+// ccpab header   
+.ccpab-header {
+    overflow-x: clip;
 
     .ccpab-top-header{
-        padding: 10px 5px;
-    
-            .top-header-wrapper{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-    
-                .top-header-col{
-                    height: 80px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                  
-                    .logo{
-                        padding-right: 15px;
-                        position: relative;
-                        margin: 0px;
-    
-                        img{
-                            width: 40px;
-                        }
-    
-                        &::before{
-                            position: absolute;
-                            content: "";
-                            width: 1.5px ;
-                            height:36px;
-                            background-color: #4A4764;
-                            top: 3px;
-                            right: 0;
-                        }
+        padding: 30px 0;
+
+        @include breakpoint(1024) {
+            padding: 24px 0;
+        }
+
+        @include breakpoint(768) {
+            padding: 18px 0;
+        }
+
+            .top-header-col{
+                gap: 15px;
+
+                @include breakpoint(1200) {
+                    gap: 10px;
+                }
+
+                .cc-logo{
+
+                    img{
+                        width: 100%;
+                        max-width: 40px;
+                        aspect-ratio: 1;
                     }
-    
-                    .icon{
-                        padding: 0px 15px;
-                        margin: 0px;
-    
-                        img{
-                            width: 40px;
-                            height: 40px;
-                        }
+                }
+                
+                .ab-logo-devider {
+                    width: 2px;
+                    height: 30px;
+                    background: #EFE6FF;
+                }
+
+                .ab-logo{
+                    img{
+                        width: 100%;
+                        max-width: 40px;
+                        aspect-ratio: 1;
                     }
-                    .text{
+                    .ab-logo-text{
                         font-size: 22px;
-                        line-height: 28px;
+                        line-height: 22px;
+                        font-weight: 600;
+                        color: $ab-blue;
                         margin: 0px;
                     }
                 }
-    
-                .ccpab-menu{
-                    display: flex;
-                    align-items: center;
-    
-                    .menu-item{
-                        font-size: 18px;
-                        font-weight: 400;
-                        line-height: 22px;
-                        color: $secondary-color;
-                        margin: 0px 20px;
-                        transition: 0.5s;
-                        display: block;
-    
-                        &:hover{
-                            color: $blue-color;
-                        }
-                    }
-                    .active{
-                        color: $blue-color;
-                    }
-    
-    
-                    .ccpab-menu-btn{
-                        @extend .btn-primary;
-                        background: #080050;
-                        padding:8px 30px;
-                        display: flex;
-                        
-                    &::after {
-                        bottom: -15px;
-                        box-shadow: 0 6px 10px 10px #8746FF;
-                    }
-                
-    
-                    &::before {
-                        top: -15px;
-                        opacity: 0;
-                        box-shadow: 0 -6px 10px 10px #8746FF;
-                    }
-    
-                    }
+            }
+
+            .hamburger-menu {
+                width: 30px;
+                height: 24px;
+                gap: 6px;
+
+                span {
+                    width: 100%;
+                    height: 3px;
+                    background: $ab-blue;
                 }
             }
 
-            .menu-icon{
-                position: absolute;
-                top:30px;
-                right: 10px;
-                width: 60px;
-                visibility: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .ccpab-menu{
 
+                ul {
+                    @extend .unstyle, .d-flex, .align-center;
+                    gap: 20px;
+
+                    @include breakpoint(1200) {
+                        gap: 10px;
+                    }
+
+
+                    li {
+                        a {
+                            font-size: 18px;
+                            font-weight: 400;
+                            line-height: 22px;
+                            color: $ab-secondary;
+                            padding: 10px;
+                            @extend .transition;
+        
+                            &:hover{
+                                color: $ab-blue;
+                            }
+                        }
+                        &.current-menu-item {
+                            a {
+                                color: $ab-blue;
+                            }
+                        }
+                        &.ccpab-menu-btn {
+
+                            a {
+                                @extend .btn-primary;
+                                background: #080050;
+                                padding: 10px 30px;
+                                display: flex;
+                                color: #fff;
+                                border-radius: 8px;
+                                border: 0;
+                                outline: 0;
+                                overflow: hidden;
+
+                                &::after {
+                                    bottom: -15px;
+                                    box-shadow: 0 6px 10px 10px #8746FF;
+                                }
+                                &::before {
+                                    top: -15px;
+                                    opacity: 0;
+                                    box-shadow: 0 -6px 10px 10px #8746FF;
+                                }
+                            }
+                        }
+
+                    }
+                }
             }
+            .ab-menu {
 
-            // @media screen and (max-width:1070px) {
-                
-            //     .top-header-wrapper{
-            //         .top-header-col{
-            //             .logo{
-            //                 padding-right: 15px;
-            //                 position: relative;
-            //                 margin: 0px;
-        
-            //                 img{
-            //                     width: 30px;
-            //                 }
-            //             }
-        
-            //             .icon{
-            //                 padding: 0px 15px;
-            //                 margin: 0px;
-        
-            //                 img{
-            //                     width: 30px;
-            //                     height: 30px;
-            //                 }
-            //             }
-            //             .text{
-            //                 font-size: 18px;
-          
-            //             }
-            //         }
-        
-            //         .ccpab-menu{
-            //             display: flex;
-            //             align-items: center;
-        
-            //             .menu-item{
-            //                 font-size: 16px;
-            //                 margin: 0px 10px;
-
-            //             }
-        
-            //             .ccpab-menu-btn{
-            //                 @extend .btn-primary;
-            //                 background: #080050;
-            //                 padding:6px 20px;
-            //                 font-size: 14px;
-                            
-            //             }
-            //         }
-
-            //     }
-
-          
+                @include breakpoint(1024) {
+                    position: absolute;
+                    background: #d7c2ff;
+                    width: calc(100% + 50px);
+                    right: -120%;
+                    padding: 30px 25px 40px;
+                    top: 100%;
+                    height: 100vh;
+                    z-index: 99;
     
-            // }   
+                    ul {
+                        flex-direction: column;
+                        gap: 20px;
+                        align-items: flex-start;
+                    }
+                }
+            } 
+        
+    }
 
+    &.cc-mobile-menu-active {
 
-            // @media screen and (max-width:870px) {
-                
-            //     .top-header-wrapper{
-            //         position: relative;
-            //         .top-header-col{
-            //             .logo{
-            //                 padding-right: 15px;
-            //                 position: relative;
-            //                 margin: 0px;
-        
-            //                 img{
-            //                     width: 30px;
-            //                 }
-            //             }
-        
-            //             .icon{
-            //                 padding: 0px 15px;
-            //                 margin: 0px;
-        
-            //                 img{
-            //                     width: 30px;
-            //                     height: 30px;
-            //                 }
-            //             }
-            //             .text{
-            //                 font-size: 18px;
-          
-            //             }
-            //         }
-        
-            //         .ccpab-menu{
-            //             position: absolute;
-            //             display: block;
-            //             align-items: center;
-        
-            //             .menu-item{
-            //                 font-size: 16px;
-            //                 margin: 0px 10px;
+        .hamburger-menu {
 
-            //             }
-        
-            //             .ccpab-menu-btn{
-            //                 @extend .btn-primary;
-            //                 background: #080050;
-            //                 padding:6px 20px;
-            //                 font-size: 14px;
-                            
-            //             }
-            //         }
+            span {
+                @extend .absolute;
 
-            //     }
+                &:first-child {
+                    transform: rotate(45deg);
+                }
+                &:last-child {
+                    transform: rotate(-45deg);
+                }
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+            }
+        }
 
-            //     // .menu-icon{
-            //     //     visibility: visible;
-            //     // }
-          
-    
-            // }   
+        .ab-menu {
+
+            @include breakpoint(1024) {
+                right: -25px;
+            }
+        }
 
     }
+}
+
+
+.ccpab-header-area{
+
 
     .ccpab-main-header{
         width: 100%;
@@ -378,7 +330,7 @@ button{
                 font-size: 18px;
                 line-height: 30px;
                 font-weight: 400;
-                color: $text-color;
+                color: $ab-text;
 
             }
             .ccpab-button{
@@ -425,7 +377,7 @@ button{
                     font-size: 18px;
                     line-height: 28px;
                     font-weight: 400px;
-                    color: $secondary-color;
+                    color: $ab-secondary;
                 }
             }
     
@@ -477,7 +429,7 @@ button{
                         font-size: 18px;
                         line-height: 28px;
                         font-weight: 400px;
-                        color: $secondary-color;
+                        color: $ab-secondary;
                     }
                 }       
                }
@@ -526,7 +478,7 @@ button{
                         font-size: 18px;
                         line-height: 28px;
                         font-weight: 400px;
-                        color: $secondary-color;
+                        color: $ab-secondary;
                     }
                 }       
                }
@@ -613,7 +565,7 @@ button{
               line-height: 28px;
               font-weight: 600;
               margin-bottom: 20px;
-              color: $black-color;
+              color: $ab-black;
             text-align: center;
 
             }
@@ -622,7 +574,7 @@ button{
                 font-size: 18px;
                 line-height: 28px;
                 font-weight: 400;
-                color: $text-color;
+                color: $ab-text;
             text-align: center;
 
             }
@@ -655,7 +607,7 @@ button{
     }
 
     .ccpab-feature-desc{
-        color: $primary-color;
+        color: $ab-primary;
         font-size: 45px;
         font-weight:600;
         line-height: 58px;
@@ -694,7 +646,7 @@ button{
                     font-size: 40px;
                     line-height: 50px;
                     font-weight: 600px;
-                    color: $secondary-color;
+                    color: $ab-secondary;
                     position: relative;
 
                     .top{
@@ -761,14 +713,14 @@ button{
                 }
     
                 span{
-                    color: $blue-color;
+                    color: $ab-blue;
                 }
               
                 .feature-card-desc{
                     font-size: 18px;
                     line-height: 28px;
                     font-weight: 400;
-                    color: $text-color;
+                    color: $ab-text;
                     position: relative;
 
                     .bottom{
@@ -897,7 +849,7 @@ button{
             font-size: 22px;
             line-height: 22px;
             padding-left: 12px;
-            color: $secondary-color;
+            color: $ab-secondary;
             margin: 0;
         }
 
@@ -969,20 +921,20 @@ button{
                 font-size: 22px;
                 font-weight: 400;
                 line-height: 28px;
-                color: $secondary-color;
+                color: $ab-secondary;
             }
 
             .price-range{
                 font-size: 40px;
                 line-height: 50px;
                 font-weight: 600;
-                color: $secondary-color;
+                color: $ab-secondary;
 
                 .price-title{
                     color: red;
                     display: inline-block;
                     font-size: 18px;
-                    color: $text-color
+                    color: $ab-text
                 }
     
                 
@@ -996,7 +948,7 @@ button{
                 color: red;
                 display: inline-block;
                 font-size: 12px;
-                color: $text-color
+                color: $ab-text
             } 
             }
 
@@ -1057,14 +1009,14 @@ button{
                 font-size: 22px;
                 font-weight: 400;
                 line-height: 28px;
-                color: $secondary-color;
+                color: $ab-secondary;
             }
 
             .price-range{
                 font-size: 40px;
                 line-height: 50px;
                 font-weight: 600;
-                color: $secondary-color;
+                color: $ab-secondary;
                 // display: flex
 
 
@@ -1072,7 +1024,7 @@ button{
                     color: red;
                     display: inline-block;
                     font-size: 18px;
-                    color: $text-color
+                    color: $ab-text
                 }  
 
                 
@@ -1086,7 +1038,7 @@ button{
                 color: red;
                 display: inline-block;
                 font-size: 12px;
-                color: $text-color
+                color: $ab-text
             } 
             }
             
@@ -1184,7 +1136,7 @@ button{
                         font-size: 18px;
                         line-height:30px;
                         font-weight: 500;
-                        color: $secondary-color;
+                        color: $ab-secondary;
     
                         .price-title{
                             font-size: 10px
@@ -1238,7 +1190,7 @@ button{
                         font-size: 18px;
                         line-height:30px;
                         font-weight: 500;
-                        color: $secondary-color;
+                        color: $ab-secondary;
     
                         .price-title{
                             font-size: 10px
@@ -1325,7 +1277,7 @@ button{
                 font-size: 26px;
                 line-height: 28px;
                 font-weight: 600;
-                color: $secondary-color;
+                color: $ab-secondary;
                 margin-bottom: 5px;
 
                 @media screen and (max-width:1024px) {
@@ -1339,7 +1291,7 @@ button{
                 font-size: 18px;
                 line-height: 28px;
                 font-weight: 500;
-                color: $text-color;
+                color: $ab-text;
 
                 
                 @media screen and (max-width:1024px) {
@@ -1354,7 +1306,7 @@ button{
                 font-size: 18px;
                 line-height: 28px;
                 font-weight: 400;
-                color: $text-color;
+                color: $ab-text;
 
                 @media screen and (max-width:1024px) {
                     font-size: 16px;
@@ -1410,7 +1362,7 @@ button{
             font-size: 46px;
             line-height: 58px;
             font-weight: 600;
-            color: $primary-color;
+            color: $ab-primary;
 
             @media screen and (max-width:768px) {
                 font-size: 30px;
@@ -1567,7 +1519,7 @@ button{
             font-weight: 600;
             line-height:50px;
             margin-bottom: 30px;
-            color: $secondary-color;
+            color: $ab-secondary;
             z-index: 1;
             @media screen and (max-width:768px) {
                 font-size: 32px;
@@ -1579,7 +1531,7 @@ button{
             font-size: 18px;
             line-height: 30px;
             font-weight: 400;
-            color: $text-color;
+            color: $ab-text;
             z-index: 1;
 
         }
