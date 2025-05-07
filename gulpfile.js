@@ -15,7 +15,7 @@ function compileGlobalCSS() {
     .pipe(sass().on("error", sass.logError))
     .pipe(postcss([autoprefixer()]))
     .pipe(cleanCSS())
-    .pipe(rename({ basename: "codeconfig-style", extname: ".css" }))
+    .pipe(rename({ basename: "announcement-bar", extname: ".css" }))
     .pipe(gulp.dest(outputPath));
 }
 
