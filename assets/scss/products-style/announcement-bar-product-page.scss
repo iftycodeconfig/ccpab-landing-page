@@ -49,6 +49,60 @@ $ab-white:#ffffff;
             @include font(30, 40);
         }
     }
+    h2 {
+        @include font(46, 58);
+        font-weight: 600;
+
+        @include breakpoint(1024) {
+            @include font(38, 48);
+        }
+
+        @include breakpoint(768) {
+            @include font(32, 42);
+        }
+
+        @include breakpoint(575) {
+            @include font(26, 36);
+        }
+    }
+
+    h3 {
+        @include font(40, 50);
+        font-weight: 600;
+
+        @include breakpoint(1024) {
+            @include font(34, 44);
+        }
+
+        @include breakpoint(768) {
+            @include font(28, 38);
+        }
+
+        @include breakpoint(575) {
+            @include font(22, 32);
+        }
+    }
+
+    h5 {
+        @include font(24, 28);
+        font-weight: 600;
+
+        @include breakpoint(768) {
+            @include font(20, 24);
+        }
+        @include breakpoint(575) {
+            @include font(18, 22);
+        } 
+    }
+
+    h6 {
+        @include font(18, 28);
+        font-weight: 500;
+
+        @include breakpoint(768) {
+            @include font(16, 26);
+        }
+    }
 
     p {
         @include font(20, 30);
@@ -317,9 +371,46 @@ button{
 
 .ab-banner{
     padding: 45px 0;
+    overflow-x: clip;
+    @extend .relative;
+    z-index: 1;
 
     @include breakpoint(1024) {
         padding: 30px 0;
+    }
+
+    &::before,
+    &::after {
+        @extend .absolute;
+        content: '';
+        background: url(/assets/images/announce-bar/ab-banner-bg-shape.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+
+    &::before {
+        width: min(60%, 585px);
+        aspect-ratio: 15/16;
+        top: -200px;
+        left: 0;
+
+        @include breakpoint(1024) {
+            top: 0;
+        }
+    }
+
+    &::after {
+        width: min(60%, 510px);
+        aspect-ratio: 15/16;
+        bottom: -150px;
+        right: 0;
+        transform: rotate(180deg);
+
+        @include breakpoint(1024) {
+            bottom: 0;
+        }
     }
 
     .cc-ab-row {
@@ -433,10 +524,17 @@ button{
 
 // cc-ab-services area
 .cc-ab-service-area{
-    width: 100%;
-    position: relative;
-    margin-top: 50px;
-    
+    padding: 40px 0;
+    overflow-x: clip;
+
+    @include breakpoint(1024) {
+        padding: 30px 0;
+    }
+
+    @include breakpoint(768) {
+        padding: 20px 0;
+    }
+
     .cc-ab-service-wrapper{
         @extend .d-flex, .space-between, .align-center, .flex-wrap;
         align-items: stretch;
@@ -452,7 +550,7 @@ button{
             width: 85px;            
             height: 42px;      
             border-radius: 50%;      
-            mask: url(/assets/images/announcement-bar/Sahpe.svg); 
+            mask: url(/assets/images/announce-bar/ab-shape-1.svg); 
             mask-size: cover;       
             mask-position: center;    
             mask-repeat: no-repeat;    
@@ -461,11 +559,11 @@ button{
         }
         .bottom-left-mask{
             position: absolute;
-            bottom: -30px;
+            bottom: -35px;
             left: -25px;
             width: 54px;            
             aspect-ratio: 1 / 1;     
-            mask: url(/assets/images/announcement-bar/Vector.svg); 
+            mask: url(/assets/images/announce-bar/ab-shape-2.svg); 
             mask-size: contain;       
             mask-position: center;    
             mask-repeat: no-repeat;    
@@ -474,13 +572,17 @@ button{
         }
 
          .cc-ab-service-col{
-            flex: 1 0 355px;
+            flex: 1 0 300px;
             background: #FBF8FF;
             border: 1px solid #EFE6FF;
             @extend .flex-center;
             flex-direction: column;
             border-radius: 15px;
             padding: 40px 20px;
+
+            @include breakpoint(768) {
+                padding: 20px 10px;
+            }
 
             .img{
                 padding: 35px;
@@ -489,21 +591,32 @@ button{
                 border: 1px solid #EFE6FF;
                 border-radius: 16px;
 
+                @include breakpoint(768) {
+                    padding: 20px;
+                }
+
                 img{
                     width: 50px;
                     height: 50px;
+
+                    @include breakpoint(768) {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
             }
 
-         .service-title{
-              margin-top: 25px;
-              font-size:28px;
-              line-height: 28px;
-              font-weight: 600;
-              margin-bottom: 20px;
-              color: $ab-black;
-            text-align: center;
+            .service-title{
+                @include font(28, 28);
+                font-weight: 600;
+                margin: 25px 0 20px;
+                color: $ab-black;
+                text-align: center;
 
+                @include breakpoint(768) {
+                    @include font(22, 22);
+                    margin: 15px 0 10px;
+                }
             }
 
             .service-details{
@@ -511,10 +624,9 @@ button{
                 line-height: 28px;
                 font-weight: 400;
                 color: $ab-text;
-            text-align: center;
-
+                text-align: center;
             }
-         }
+        }
     }
 
 }
