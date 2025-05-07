@@ -10,112 +10,142 @@ $ab-blue:#8746FF;
 $ab-text:#4A4764;
 $ab-white:#ffffff;
 
-// common Class
+// common Class start
 
-.ccpab-container{
+.cc-ab-container{
     width: 100%;
     max-width:1370px;
     margin: 0 auto;
     padding: 0 25px;
 }
 
-button{
-    cursor: pointer;
-}
+.ab-section {
 
-.flex{
-    display: flex;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $ab-secondary;
 
-.f-col {
-    flex-direction: column;
-}
+        span {
+            color: $ab-blue;
+        }
+    }
 
-.justify-between{
-    display: flex;
-    justify-content: space-between;
-}
-.justify-center{
-    display: flex;
-    justify-content:center;
-}
+    h1 {
+        @include font(52, 62);
+        font-weight: 700;
 
-.flex-start{
-    display: flex;
-    justify-content: flex-start;
-}
-
-.items-center{
-    display: flex;
-    align-items: center;
-}
-.wrap{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.p-relative {
-    position: relative;
-}
-
-.p-absolute{
-    position: absolute;
-}
-
-// Css For Button
-
-.btn-primary{
-    position: relative;
-    background-color: #8746FF;
-    padding: 12px 30px;
-    color: $ab-white;
-    border-radius: 8px;
-    border: 0;
-    outline: 0;
-    overflow: hidden;
-
-
-    &::before, &::after {
-        position: absolute;
-        content: "";
-        width: 80%;
-        height: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 0px 0px 7px 7px;
-        transition: 0.1s; 
-      }
-
-
-      &::after {
-        bottom: -15px;
-        box-shadow: 0 6px 10px 10px #CBAEFF;
-      }
-   
-
-      &::before {
-        top: -15px;
-        opacity: 0;
-        box-shadow: 0 -6px 10px 10px #CBAEFF;
-      }
-  
-    &:hover{
-        &::after{
-        opacity: 0;
+        @include breakpoint(1024) {
+            @include font(44, 54);
         }
 
-        &::before {
-        opacity: 1;
+        @include breakpoint(768) {
+            @include font(36, 46);
+        }
+        @include breakpoint(575) {
+            @include font(30, 40);
+        }
+    }
+
+    p {
+        @include font(20, 30);
+        font-weight: 400;
+        color: $ab-text;
+
+        @include breakpoint(768) {
+            @include font(18, 28);
+        }
+        @include breakpoint(575) {
+            @include font(16, 26);
         }
     }
 }
 
 
-// ccpab header   
-.ccpab-header {
+
+button{
+    cursor: pointer;
+}
+
+
+
+.ab-btn {
+    gap: 7px;
+    @include font(18, 18);
+    font-weight: 500;
+    padding: 13px 26px;
+    border-radius: 8px;
+    border: 0;
+    outline: 0;
+    overflow: hidden;
+    @extend .transition;
+
+    img {
+        max-width: 24px;
+    }
+
+    &.btn-blue {
+        position: relative;
+        background-color: #8746FF;
+        color: #ffffff;
+
+        &::before, &::after {
+            position: absolute;
+            content: "";
+            width: 80%;
+            height: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            @extend .transition;
+        }
+        
+        &::before {
+            top: -15px;
+            opacity: 0;
+            box-shadow: 0 -6px 10px 10px #CBAEFF;
+            border-radius: 0 0 7px 7px;
+          }
+    
+          &::after {
+            bottom: -15px;
+            box-shadow: 0 6px 10px 10px #CBAEFF;
+            border-radius: 7px 7px 0 0;
+          }
+       
+    
+      
+        &:hover{
+            &::after{
+            opacity: 0;
+            }
+    
+            &::before {
+            opacity: 1;
+            }
+        }
+    }
+
+    &.btn-white {
+        background: #FBF8FF;
+        color: $ab-blue;
+        border: 1px solid #EFE6FF;
+
+        &:hover {
+            background: #EFE6FF;
+        }
+    }
+}
+
+// common Class end
+
+// cc-ab header   
+.cc-ab-header {
     overflow-x: clip;
 
-    .ccpab-top-header{
+    .cc-ab-top-header{
         padding: 30px 0;
 
         @include breakpoint(1024) {
@@ -176,7 +206,7 @@ button{
                 }
             }
 
-            .ccpab-menu{
+            .cc-ab-menu{
 
                 ul {
                     @extend .unstyle, .d-flex, .align-center;
@@ -205,12 +235,12 @@ button{
                                 color: $ab-blue;
                             }
                         }
-                        &.ccpab-menu-btn {
+                        &.cc-ab-menu-btn {
 
                             a {
-                                @extend .btn-primary;
+                                @extend .ab-btn, .btn-blue;
                                 background: #080050;
-                                padding: 10px 30px;
+                                padding: 12px 30px;
                                 display: flex;
                                 color: #fff;
                                 border-radius: 8px;
@@ -239,7 +269,7 @@ button{
                     position: absolute;
                     background: #d7c2ff;
                     width: calc(100% + 50px);
-                    right: -120%;
+                    right: -150%;
                     padding: 30px 25px 40px;
                     top: 100%;
                     height: 100vh;
@@ -285,224 +315,130 @@ button{
 }
 
 
-.ccpab-header-area{
+.ab-banner{
+    padding: 45px 0;
 
+    @include breakpoint(1024) {
+        padding: 30px 0;
+    }
 
-    .ccpab-main-header{
-        width: 100%;
-    
-        .ccpab-main-header-wrapper {
-           @extend .flex ,.justify-between, .items-center;
-           gap: 40px;
-           position: relative;
+    .cc-ab-row {
+        gap: 35px;
 
-           &::after,&::before{
-            position: absolute;
-            content: "";
-            top: 5%;
-            left: -5%;
-            width: 100px;
-            height: 250px;
-            background: radial-gradient(104.72% 104.72% at 49.79% 53.74%, #FFFFFF 0%, #8746FF 100%);
-            filter: blur(30px);
-           }
-           
-           &::before{
-            top: auto;
-            bottom: 5%;
-            left: auto;
-            right:-5%;
-            width: 50px;
-            height: 250px;
-           }
-    
-           .ccpab-main-header-col-text{
-               z-index: 1;
-            flex-basis: 45%;
-    
-            h2{
-                font-size: 42px;
-                font-weight: 700;
-                line-height: 62px;
-                margin-bottom: 30px;
+        @include breakpoint(1024) {
+            gap: 30px;
+        }
+
+        @include breakpoint(768) {
+            gap: 20px;
+        }
+
+        .cc-ab-banner-contents {
+            width: 100%;
+            max-width: calc(45% - 20px);
+
+            @include breakpoint(1024) {
+                max-width: 100%;
             }
-            p{
-                font-size: 18px;
-                line-height: 30px;
-                font-weight: 400;
-                color: $ab-text;
 
+            h1 {
+                margin-bottom: 25px;
+
+                @include breakpoint(1024) {
+                    margin-bottom: 15px;
+                }
             }
-            .ccpab-button{
-                @extend .flex,.flex-start ,.items-center;
+            p {
+                margin-bottom: 40px;
+
+                @include breakpoint(1024) {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .ab-buttons {
                 gap: 10px;
-                margin-bottom: 35px;
-    
-                .btn{
-                    @extend .flex,.items-center;
-                    @extend .btn-primary;
-    
-                    img{
-                        width: 20px;
-                        padding-right: 5px;
-                    }
+                margin-bottom: 40px;
+
+                @include breakpoint(1024) {
+                    margin-bottom: 20px;
                 }
-                .white-btn{
-                    padding: 12px 25px;
-                    border-radius: 8px;
-                    @extend .flex,.items-center;
-    
-                    img{
-                        width: 20px;
-                        padding-right: 5px;
-                    }
+
+                @include breakpoint(768) {
+                    justify-content: center
                 }
+
             }
-    
-    
             .inner-text{
-                @extend .flex , .items-center;
-                // img{
-                //     width: 60px;
-                //     padding-right: 10px;
-                // }
+                @extend .d-flex, .align-center , .flex-wrap;
+
+                @include breakpoint(1024) {
+                    justify-content: center;
+                }
+
                 .stroke{
+                    @include font(30, 28);
+                    font-weight: 700;
                     color: transparent;
-                    font-size: 30px;
-                    line-height: 28px;
                     margin-right: 5px;
                     -webkit-text-stroke: 1px #8746FF;
+
+                    @include breakpoint(1024) {
+                        @include font(24, 22);
+                    }
+
+                    @include breakpoint(768) {
+                        @include font(20, 18);
+                    }
                 }
                 span{
-                    font-size: 18px;
-                    line-height: 28px;
-                    font-weight: 400px;
+                    @include font(20, 30);
+                    font-weight: 400;
                     color: $ab-secondary;
+
+                    @include breakpoint(1024) {
+                        @include font(16, 24);
+                    }
                 }
             }
-    
-           }
-    
-           .ccpab-main-header-col-img{
-            z-index: 1;
-            flex-basis: 55%;
-    
-            img{
-                width: 100%;
+        }
+
+        .cc-ab-banner-img {
+            width: 100%;
+            max-width: calc(55% - 20px);
+
+            @include breakpoint(1024) {
+                max-width: 100%;
             }
-           }
-    
         }
-   
-        @media screen and (max-width:1300px) {
-
-
-            .ccpab-main-header-wrapper {
-               gap: 30px;
-        
-               .ccpab-main-header-col-text{
-                flex-basis: 100%;
-                text-align: center;
-        
-                h2{
-                    font-size: 38px;
-                    line-height: 42px;
-                }
-                p{
-                    font-size: 18px;
-                    line-height: 24px;
-                }
-                .ccpab-button{
-                    gap: 10px;
-                    margin-bottom: 35px;
-                    justify-content: center;
-                }
-        
-        
-                .inner-text{
-                    justify-content: center;
-                    img{
-                        width: 60px;
-                        padding-right: 10px;
-                    }
-                    span{
-                        font-size: 18px;
-                        line-height: 28px;
-                        font-weight: 400px;
-                        color: $ab-secondary;
-                    }
-                }       
-               }
-        
-               .ccpab-main-header-col-img{
-                flex-basis: 100%;
-               }
-        
-            }           
-        }
-   
-        @media screen and (max-width:1024px) {
-
-
-            .ccpab-main-header-wrapper {
-               @extend .flex ,.justify-between, .items-center;
-               flex-direction: column;
-               gap: 30px;
-        
-               .ccpab-main-header-col-text{
-                flex-basis: 100%;
-                text-align: center;
-        
-                h2{
-                    font-size: 32px;
-                    line-height: 42px;
-                }
-                p{
-                    font-size: 18px;
-                    line-height: 24px;
-                }
-                .ccpab-button{
-                    gap: 10px;
-                    margin-bottom: 35px;
-                    justify-content: center;
-                }
-        
-        
-                .inner-text{
-                    justify-content: center;
-                    img{
-                        width: 60px;
-                        padding-right: 10px;
-                    }
-                    span{
-                        font-size: 18px;
-                        line-height: 28px;
-                        font-weight: 400px;
-                        color: $ab-secondary;
-                    }
-                }       
-               }
-        
-               .ccpab-main-header-col-img{
-                flex-basis: 100%;
-               }
-        
-            }           
-        }
-
-
     }
 
 }
+// .inner-text{
+//     @extend .d-flex, .align-center;
+//     .stroke{
+//         color: transparent;
+//         font-size: 30px;
+//         line-height: 28px;
+//         margin-right: 5px;
+//         -webkit-text-stroke: 1px #8746FF;
+//     }
+//     span{
+//         font-size: 18px;
+//         line-height: 28px;
+//         font-weight: 400px;
+//         color: $ab-secondary;
+//     }
+// }
 
-// ccpab-services area
-.ccpab-service-area{
+// cc-ab-services area
+.cc-ab-service-area{
     width: 100%;
     position: relative;
     margin-top: 50px;
     
-    .ccpab-service-wrapper{
-        @extend .flex, .justify-between,.items-center,.wrap;
+    .cc-ab-service-wrapper{
+        @extend .d-flex, .space-between, .align-center, .flex-wrap;
         align-items: stretch;
         border-radius: 15px;
         gap: 24px;
@@ -537,18 +473,18 @@ button{
             transform: rotate(-5deg);
         }
 
-         .ccpab-service-col{
+         .cc-ab-service-col{
             flex: 1 0 355px;
             background: #FBF8FF;
             border: 1px solid #EFE6FF;
-            @extend .flex ,.justify-center , .items-center;
+            @extend .flex-center;
             flex-direction: column;
             border-radius: 15px;
             padding: 40px 20px;
 
             .img{
                 padding: 35px;
-                @extend .flex, .items-center , .justify-center;
+                @extend .flex-center;
                 background-color: #FFFFFF;
                 border: 1px solid #EFE6FF;
                 border-radius: 16px;
@@ -584,7 +520,7 @@ button{
 }
 
 // // title section
-.ccpab-section-title{
+.cc-ab-section-title{
     width: 100%;
     max-width:626px;
     margin: 0 auto;
@@ -606,7 +542,7 @@ button{
         margin-bottom: 15px;
     }
 
-    .ccpab-feature-desc{
+    .cc-ab-feature-desc{
         color: $ab-primary;
         font-size: 45px;
         font-weight:600;
@@ -617,17 +553,17 @@ button{
 }
 
 // feature section
-.ccpab-feature{
+.cc-ab-feature{
     margin-top: 70px;
 
     .feature-card-wrapper{
         gap: 60px;
 
         .single-feature-card-wrapper{
-            @extend .flex,.items-center,.justify-center ;
+            @extend .flex-center;
             gap: 25px;
-            border: 1px solid rgba(var(--ccpab-fe-card-color), 0.1);
-            background: rgba(var(--ccpab-fe-card-color), 0.02);
+            border: 1px solid rgba(var(--cc-ab-fe-card-color), 0.1);
+            background: rgba(var(--cc-ab-fe-card-color), 0.02);
             border-radius: 16px;
             padding: 40px;
     
@@ -636,7 +572,7 @@ button{
                 flex-direction: row-reverse;
             }
 
-            .ccpab-feature-text{
+            .cc-ab-feature-text{
                 width: 100%;
                 max-width: 560px;
                 text-align: left;
@@ -656,7 +592,7 @@ button{
                         top: -30px;
                         right: 160px;
                         mask-image:url(/assets/images/announcement-bar/Highlight_10.png);  
-                        background-color: rgba(var(--ccpab-fe-card-color),);
+                        background-color: rgba(var(--cc-ab-fe-card-color),);
                         mask-size: cover;       
                         mask-position: center;    
                         mask-repeat: no-repeat;    
@@ -735,7 +671,7 @@ button{
                         mask-size: cover;       
                         mask-position: center;    
                         mask-repeat: no-repeat;    
-                        background: rgba(var(--ccpab-fe-card-color)); 
+                        background: rgba(var(--cc-ab-fe-card-color)); 
 
                         @media screen and (max-width:1024px) {
                             width: 60px;
@@ -759,7 +695,7 @@ button{
                     }
                 }
 
-                .ccpab-feature-img{
+                .cc-ab-feature-img{
                     width: 100%;
                     max-width: 645px;
                     background-color: #EFE6FF;
@@ -780,12 +716,12 @@ button{
 }
 
 // // pricing section
-.ccpab-pricing-plan-section{
+.cc-ab-pricing-plan-section{
 
     margin: 80px 0;
 
-    // ccpab-section-title
-    .ccpab-section-title{
+    // cc-ab-section-title
+    .cc-ab-section-title{
         .title-tag{
             width: 100%;
             max-width: 128px;
@@ -954,8 +890,8 @@ button{
 
     
             .button{
-                @extend .flex,.items-center;
-                @extend .btn-primary;
+                @extend .d-flex, .align-center;
+                @extend .ab-btn;
 
                 img{
                     width: 20px;
@@ -1044,8 +980,8 @@ button{
             
             
             .button{
-                @extend .flex,.items-center;
-                @extend .btn-primary;
+                @extend .d-flex, .align-center;
+                @extend .ab-btn;
 
                 img{
                     width: 20px;
@@ -1217,10 +1153,10 @@ button{
     
 
 // review section
-.ccpab-review-section{
+.cc-ab-review-section{
 
 
-    .ccpab-section-title{
+    .cc-ab-section-title{
 
         margin-bottom: 30px;
     
@@ -1334,7 +1270,7 @@ button{
 
 
     .btn{
-        @extend .btn-primary;
+        @extend .ab-btn;
         position: absolute;
         bottom: 70px;
         left: 50%;
@@ -1348,11 +1284,11 @@ button{
 }
 
 // Faq Section
-.ccpab-faq-section{
+.cc-ab-faq-section{
     margin-top: 70px;
     width: 100%;
     
-    .ccpab-section-title{
+    .cc-ab-section-title{
 
         width: 100%;
         max-width: 780px;
@@ -1434,7 +1370,7 @@ button{
 
 
 // announcement bar
-.ccpab-announcement{
+.cc-ab-announcement{
     margin-top: 120px;
     position: relative;
     margin-bottom: -130px;
@@ -1535,13 +1471,13 @@ button{
             z-index: 1;
 
         }
-        .ccpab-button{
-            @extend .flex,.flex-start ,.items-center;
+        .cc-ab-button{
+            @extend .d-flex, .align-center;
             gap: 10px;
 
             .btn{
-                @extend .flex,.items-center;
-                @extend .btn-primary;
+                @extend .d-flex, .align-center;
+                @extend .ab-btn;
 
                 img{
                     width: 20px;
@@ -1558,7 +1494,8 @@ button{
                 border-radius: 8px;
                z-index: 1;
 
-                @extend .flex,.items-center;
+                @extend .d-flex, .align-center;
+                @extend .btn-white;
 
                 img{
                     width: 20px;
@@ -1574,7 +1511,7 @@ button{
 
 // footer
 
-.ccpab-footer{
+.cc-ab-footer{
     width: 100%;
     height: auto;
     background: linear-gradient(180deg, #F4FBFF 0%, #FFFFFF 100%);
@@ -1619,7 +1556,7 @@ button{
         }
  
 
-    .ccpab-content-area{
+    .cc-ab-content-area{
         width: 100%;
         max-width: 1280px;
         margin: auto;
@@ -1627,7 +1564,7 @@ button{
         justify-content: space-between;
         align-items: start;
 
-        .ccpab-content-area-col{
+        .cc-ab-content-area-col{
             // display: flex;
             // justify-content: start;
             img{
@@ -1734,7 +1671,7 @@ button{
 
 
 
-        .ccpab-content-area-col{
+        .cc-ab-content-area-col{
 
             .title{
 
