@@ -149,7 +149,7 @@ button{
     @extend .transition;
 
     img {
-        max-width: 24px;
+        max-width: 20px !important;
     }
 
     &.btn-blue {
@@ -203,6 +203,16 @@ button{
         }
     }
 }
+
+.ab-section-title{
+    width: 100%;
+    max-width:626px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
 
 // common Class end
 
@@ -644,24 +654,6 @@ button{
 
 }
 
-// // title section
-.cc-ab-section-title{
-    width: 100%;
-    max-width:626px;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: 20px;
-
-
-    .cc-ab-feature-desc{
-        color: $ab-primary;
-        font-size: 45px;
-        font-weight:600;
-        line-height: 58px;
-        text-align: center
-    }
-
-}
 
 // feature section
 .cc-ab-feature{
@@ -892,447 +884,243 @@ button{
 }
 
 // // pricing section
-.cc-ab-pricing-plan-section{
+.ab-pricing-section{
+    padding: 40px 0;
 
-    margin: 80px 0;
-
-    // cc-ab-section-title
-    .cc-ab-section-title{
-        .title-tag{
-            width: 100%;
-            max-width: 128px;
-        }  
+    @include breakpoint(1024) {
+        padding: 30px 0;
+    }
+    @include breakpoint(768) {
+        padding: 20px 0;
     }
 
-    // toggle-button-area
-    .toggle-button{
-        width: 100%;
-        max-width: 500px;
-        padding: 10px 0;
-        margin:0 auto;
-        margin-bottom: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .ab-pricing-toggle {
+        gap: 12px;
 
-        .button{
-            width: 60px;
+        h4 {
+            @include font(22, 22);
+            font-weight: 500;
+            margin: 0;
+            @extend .transition;
+
+            &.monthly {
+                color: $ab-blue;
+            }
+        }
+
+        button {
+            width: 1000%;
+            max-width: 60px;
             height: 30px;
-            display: flex;
-            background-color: #8746FF;
-            border-radius: 40px;
-            cursor:pointer;
-            position: relative;
             padding: 4px;
+            background: $ab-blue;
+            border-radius: 50px;
+            @extend .relative, .transition;
 
-            &::before{
-                position: absolute;
+
+            &::after {
+                @extend .absolute, .transition;
                 content: "";
-                width:22px;
+                width: 20px;
                 height: 22px;
-                background-color: white;
-                left: 0;
-                bottom: 0;
+                top: 4px;
+                left: 4px;
+                background: #fff;
                 border-radius: 50%;
-                margin: 4px;
-                transition: .6s;
-
-            }
-            
-        }
-
-        input:checked + .button::before {
-            transform: translateX(30px);
-        }
-
-        input{
-            display: none;
-        }
-
-        .monthly{
-            font-size: 22px;
-            line-height: 22px;
-            padding-right: 12px;
-            color: #8746FF;
-            margin: 0;
-        }
-
-        .Yearly{
-            font-size: 22px;
-            line-height: 22px;
-            padding-left: 12px;
-            color: $ab-secondary;
-            margin: 0;
-        }
-
-    }
-
-    // Some common class for Pricing plan section
-
-    // img section
-    .img-section-col{
-        flex-basis: 40%;
-         border-radius: 15px;
-
-        .head{
-            height:250px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img{
-               width: 179px;           
             }
         }
-        
-        .content{
-            list-style-type: none;
-            text-align: center;
-            border-top: 1px solid #EFE6FF;
-            border-right: none; /* or 0 */
-            border-bottom: 1px solid #EFE6FF;
-            border-left: 1px solid #EFE6FF;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius:15px ;
 
-            li{
-                height: 58px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 16px;
-                line-height: 30px;
-                background-color: transparent;
+        &.yearly-active {
+            .monthly {
+                color: $ab-text;
+            }
+            .yearly {
+                color: $ab-blue;
+            }
 
-                &:nth-child(2n - 2){
-                    background-color:#FBF8FF;
+            button {
+                &::after {
+                    left: calc(100% - 24px);
                 }
             }
         }
     }
-
-    // free section
-    .free-section-col{
-        flex-basis: 30%;
-        border: 1px solid #EFE6FF;
-        border-top-left-radius: 15px;
-
-
-        .head{
-            height:250px;
-
-            border-bottom: 1px solid #EFE6FF ;
-
-            background-color: #FBF8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            .title{
-                font-size: 22px;
-                font-weight: 400;
-                line-height: 28px;
-                color: $ab-secondary;
-            }
-
-            .price-range{
-                font-size: 40px;
-                line-height: 50px;
-                font-weight: 600;
-                color: $ab-secondary;
-
-                .price-title{
-                    color: red;
-                    display: inline-block;
-                    font-size: 18px;
-                    color: $ab-text
-                }
-    
-                
-                @media screen  and (max-width:970px){
-            
-                    font-size: 22px;
-                   line-height: 28px;
-             }
-
-             .price-title{
-                color: red;
-                display: inline-block;
-                font-size: 12px;
-                color: $ab-text
-            } 
-            }
-
-    
-            .button{
-                @extend .d-flex, .align-center;
-                @extend .ab-btn;
-
-                img{
-                    width: 20px;
-                    padding-right: 5px;
-                }
-            }
-        }
-
-        .content{
-            list-style: none;
-            text-align: center;
-
-            li{
-                background-color: transparent;
-                height: 58px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                &:nth-child(2n - 2){
-                    background-color:#FBF8FF;;
-                }
-            }
-
-            img{
-                width: 30px;
-                height: 30px;
-            }
-        }
-    }
-
-    // premium section
-    .premium-section-col{
-        flex-basis: 30%;
-       border-top: 1px solid #EFE6FF;
-       border-right: 1px solid #EFE6FF;
-       border-bottom: 1px solid #EFE6FF;
-       border-top-right-radius: 15px;
-       border-bottom-right-radius: 15px;
-
-        .head{
-            height:250px;
-            border-bottom: 1px solid #EFE6FF ;
-            background-color: #FBF8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            .title{
-                font-size: 22px;
-                font-weight: 400;
-                line-height: 28px;
-                color: $ab-secondary;
-            }
-
-            .price-range{
-                font-size: 40px;
-                line-height: 50px;
-                font-weight: 600;
-                color: $ab-secondary;
-                // display: flex
-
-
-                .price-title{
-                    color: red;
-                    display: inline-block;
-                    font-size: 18px;
-                    color: $ab-text
-                }  
-
-                
-                @media screen  and (max-width:970px){
-            
-                    font-size: 22px;
-                   line-height: 28px;
-             }
-
-             .price-title{
-                color: red;
-                display: inline-block;
-                font-size: 12px;
-                color: $ab-text
-            } 
-            }
-            
-            
-            .button{
-                @extend .d-flex, .align-center;
-                @extend .ab-btn;
-
-                img{
-                    width: 20px;
-                    padding-right: 5px;
-                }
-            }
-        }
-
-        .content{
-            list-style: none;
-            text-align: center;
-
-            li{
-                background-color: transparent;
-                height: 58px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                &:nth-child(2n - 2){
-                    background-color:#FBF8FF;
-                    ;
-                }
-            }
-
-            img{
-                width: 30px;
-                height: 30px;
-            }
-        }
-    }
-
-// wrapper for pc
-    .wrapper-for-pc{
-        padding-bottom: 50px;
+    .ab-pricing-table {
+        margin-top: 60px;
         width: 100%;
-        display: flex;
-        align-items: stretch;
-        border-radius: 15px;
+        border-spacing: 0;
 
-        @media screen and (max-width: 768px) {
-            display: none;
-            visibility: hidden;
+        @include breakpoint(1024) {
+            margin-top: 40px;
         }
-    }
-
-    // wrapper for free section with phone screen
-    .for-phone-screen-with-free{
-        display: none;
-        visibility: hidden;
-
-        .wrapper{
-            width: 100%;
-            padding: 0px 10px 50px;
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            border-radius: 15px;
-    
-            .img-section-col{
-                 flex-shrink: 1;
-                 flex: 1;
-                 border-radius: 15px;
-    
-                .head{
-                    img{
-                        width: 100px;
-                    }
-
-                }                
-            }
-
-            .free-section-col{
-                flex-shrink: 1;
-                flex: 1;
-                border: 1px solid #EFE6FF;
-                border-top-left-radius: 15px;
-     
-                .head{
-      
-
-                    .button{
-                        padding: 10px 15px;
-        
-                    }
-
-                    .price-range{
-                        font-size: 18px;
-                        line-height:30px;
-                        font-weight: 500;
-                        color: $ab-secondary;
-    
-                        .price-title{
-                            font-size: 10px
-                        }                      
-                    }                 
-                }    
-            }        
+        @include breakpoint(768) {
+            margin-top: 30px;
         }
-    
-        @media screen and (max-width:768px){
-            display: block;
-            visibility: visible;
-        }      
-    }  
 
-    // wrapper for premium section with phone screen
-    .for-phone-screen-with-premium{
+        thead {
 
-        display: none;
-        visibility: hidden;
-     
-       .wrapper{
-            width: 100%;
-            padding: 0px 10px 50px;
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            border-radius: 15px;          
-            .img-section-col{
+            th {    
+                padding: 30px 15px;
 
-                flex-shrink: 1;
-                flex: 1;
-                border-radius: 15px;
-   
-               .head{
-                   img{
-                       width: 100px;
+                @include breakpoint(1024) {
+                    padding: 20px 10px;
+                }
+
+                @include breakpoint(575) {
+                    padding: 10px 5px;
+                }
+                
+                &:not(:first-child) {
+                    border-top: 1px solid #E0F5FF;
+                    border-left: 1px solid #E0F5FF;
+                }
+                &:nth-child(2) {
+                    border-radius: 16px 0 0 0;
+                    background: #FBF8FF;
+                }
+                &:last-child {
+                    border-right: 1px solid #E0F5FF;
+                    border-radius: 0 16px 0 0;
+                    background: #FBF8FF;
+                }
+
+                img {
+                    max-width: 179px;
+                }
+
+                h4 {
+                    @include font(22, 22);
+                    font-weight: 400;
+
+                    @include breakpoint(575) {
+                        @include font(18, 18);
+                    }
+                }
+                h3 {
+                   @include font(40, 50);
+                   font-weight: 600;
+
+                   @include breakpoint(1024) {
+                    @include font(36, 46);
                    }
-               }
-                 
-           }
-    
-            .premium-section-col{
-                flex:1;
-                flex-shrink: 1;
-               border: 1px solid #EFE6FF;
-    
-                .head{         
 
-                    .price-range{
-                        font-size: 18px;
-                        line-height:30px;
-                        font-weight: 500;
-                        color: $ab-secondary;
-    
-                        .price-title{
-                            font-size: 10px
-                        }                      
+                   @include breakpoint(768) {
+                    @include font(30, 40);
+                   }
+
+                   @include breakpoint(575) {
+                    @include font(20, 30);
+                   }
+
+                   sub {
+                    @include font(18, 28);
+                    font-weight: 400;
+
+                    @include breakpoint(575) {
+                        @include font(16, 26);
+                        display: block;
+                    }
+                   }
+                }
+
+                .ab-btn {
+                    display: inline-block;
+
+                    @include breakpoint(768) {
+                        @include font(16, 16);
+                        padding: 8px 10px;
                     }
 
-                    .button{
-                        padding: 10px 15px;
-        
-                    }
+                    @include breakpoint(575) {
+                        width: 100%;
+                        @include font(12, 12);
+                        padding: 8px 4px;
 
+                        img {
+                            display: none
+                        }
                     }
                 }
             }
-    
-            @media screen and (max-width:768px){
-                display: block;
-                visibility: visible;
-            }
-        
         }
-      
+        tbody {
+
+            tr {
+                td {
+                    border-right: 1px solid #E0F5FF;
+                    border-bottom: 1px solid #E0F5FF;
+                    padding: 15px 20px;
+                    @include font(16, 28);
+                    font-weight: 500;
+
+                    @include breakpoint(1024) {
+                        padding: 10px 15px;
+                    }
+
+                    @include breakpoint(575) {
+                        padding: 10px 5px;
+                        @include font(14, 24);
+                    }
+
+                    &:nth-child(1) {
+                        border-left: 1px solid #E0F5FF;
+                    }
+
+                    span {
+                        width: 28px;
+                        height: 28px;
+                        background-image: url("../images/announce-bar/ab-free-feature-mark.svg");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        display: block;
+                        margin: 0 auto;
+                    }
+
+                }
+                &:first-child {
+                    td {
+                        border-top: 1px solid #E0F5FF;
+
+                        &:nth-child(1) {
+                            border-radius: 16px 0 0 0;
+                        }
+                    }
+                }
+                &:last-child {
+                    td {
+                        &:nth-child(1) {
+                            border-radius: 0 0 0 16px;
+                        }
+                        &:last-child {
+                            border-radius: 0 0 16px 0;
+                        }
+                    }
+                }
+
+                &.ab-premium-feature {
+                    td {
+                        &:nth-child(2) {
+                            span {
+                                background-image: url("../images/announce-bar/ab-premium-feature-mark.svg");
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
     }
+
+      
+}
     
 
 // review section
 .cc-ab-review-section{
 
 
-    .cc-ab-section-title{
+    .ab-section-title{
 
         margin-bottom: 30px;
     
@@ -1464,7 +1252,7 @@ button{
     margin-top: 70px;
     width: 100%;
     
-    .cc-ab-section-title{
+    .ab-section-title{
 
         width: 100%;
         max-width: 780px;
