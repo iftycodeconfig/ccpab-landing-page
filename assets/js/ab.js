@@ -11,12 +11,14 @@ if (common_header) {
 }
 
 
-const ab_pricing_toggle = document.querySelector(".ab-pricing-toggle");
+const toggleButtons = document.querySelectorAll(".ab-toggle-button");
 
-if (ab_pricing_toggle) {
-    const ab_pricing_toggle_button = document.querySelector(".ab-pricing-toggle button");
-
-    ab_pricing_toggle_button.addEventListener("click", function () {
-        ab_pricing_toggle.classList.toggle("yearly-active");
+toggleButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+        const parentBody = this.closest(".ab-toggle-body");
+        if (parentBody) {
+            parentBody.classList.toggle("ab-toggle-active");
+        }
     });
-}
+});
+
