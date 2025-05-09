@@ -763,9 +763,9 @@ window.addEventListener("DOMContentLoaded", codeConfigGlobalOnLoad);
         const popUpWrapper = document.querySelector(".cc-db-hero-section");
         const popUpTargetButton = document.getElementById("db-popup-button");
         const popUpTargetArea = document.querySelector(".pop-up-video-section");
-        const closePopupButton = document.getElementById("popup-close");
-        const iFrameIntro = document.querySelector(
-            ".cc-db-hero-section .pop-up-video-section .video-fame iframe"
+        const closePopupButton = document.getElementById("cc-video-popup-close");
+        const ccPopupIframeIntro = document.querySelector(
+            ".cc-video-popup-section .cc-video-popup-box .video-fame iframe"
         );
 
         if (popUpTargetButton && popUpTargetArea) {
@@ -783,8 +783,8 @@ window.addEventListener("DOMContentLoaded", codeConfigGlobalOnLoad);
         if (closePopupButton) {
             closePopupButton.addEventListener("click", () => {
                 popUpWrapper.classList.remove("active-popup");
-                if (iFrameIntro) {
-                    iFrameIntro.src = iFrameIntro.src;
+                if (ccPopupIframeIntro) {
+                    ccPopupIframeIntro.src = ccPopupIframeIntro.src;
                 }
             });
         }

@@ -68,7 +68,7 @@
     </header>
 
 
-<section class="ab-section ab-banner">
+<section class="ab-section ab-banner cc-video-popup-section">
   <div class="cc-ab-container">
       <div class="cc-ab-row d-flex align-center space-between flex-wrap">
         <div class="cc-ab-banner-contents text-center-mobile">
@@ -82,11 +82,18 @@
                   <span>Get Started</span>
                 </a>
 
-                <a href="#" class="ab-btn btn-white flex-center">
+                <button class="ab-btn btn-white flex-center cc-video-popup-btn" id="cc-video-popup-btn">
                   <img src="/assets/images/announce-bar/play-button-blue.svg" alt="">
                   <span>Watch Video</span>
-                </a>
-            </div>
+                </button> 
+              </div><!-- Buttons -->
+
+              <div class="cc-video-popup-box">
+                <button id="cc-video-popup-close" class="cc-video-popup-close d-flex align-center absolute"></button>
+                <p class="video-frame">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i9U1E12ntSc?si=8lJ9EfqVtijLBdF6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+                </p>
+              </div><!-- CC video popup box -->
 
             <div class="inner-text">
                 <span class="stroke">100+</span>
@@ -99,7 +106,10 @@
         </div>
       </div> 
   </div>
+
+  <div class="video-frame-bg"></div><!-- for video popup background -->
 </section>
+
 
 <!-- service Area start -->
  <section class="cc-ab-service-area ab-section relative">

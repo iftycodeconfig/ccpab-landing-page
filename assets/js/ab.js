@@ -22,3 +22,39 @@ toggleButtons.forEach((button) => {
     });
 });
 
+
+
+(function ($) {
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".cc-video-popup-section");
+    
+        sections.forEach((section) => {
+            const btn = section.querySelector(".cc-video-popup-btn");
+            const popupBox = section.querySelector(".cc-video-popup-box");
+            const closeBtn = section.querySelector(".cc-video-popup-close");
+            const iframe = section.querySelector(".cc-video-popup-box .video-frame iframe");
+    
+            if (btn && popupBox) {
+                btn.addEventListener("click", () => {
+                    section.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                    section.classList.add("cc-video-popup-active");
+                });
+            }
+    
+            if (closeBtn) {
+                closeBtn.addEventListener("click", () => {
+                    section.classList.remove("cc-video-popup-active");
+                    if (iframe) {
+                        iframe.src = iframe.src;
+                    }
+                });
+            }
+        });
+    });
+    
+
+})(jQuery);

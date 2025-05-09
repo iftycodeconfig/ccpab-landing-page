@@ -1361,9 +1361,129 @@ button{
 }
 
 
+// Global video popup style
+
+.cc-video-popup-section {
+
+    .cc-video-popup-box {
+        position: fixed;
+        width: 100%;
+        max-width: 1024px;
+        height: auto;
+        margin: auto;
+        left: 0;
+        right: 0;
+        z-index: 3;
+        -webkit-transition: .7s;
+        transition: .7s ease all;
+        top: 100%;
+        opacity: 0;
+        visibility: hidden;
+        padding: 20px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        background: -webkit-gradient(linear, left top, left bottom, from(#deebff), to(rgba(255, 255, 255, .25)));
+
+        @include breakpoint(1200) {
+            max-width: 90%;
+        }
+
+        @include breakpoint(1024) {
+            padding: 10px;
+        }
+
+        @include breakpoint(768) {
+            padding: 0;
+        }
+
+        .video-frame {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56%;
+            padding-top: 15px;
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0 !important;
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                border-radius: 12px;
+            }
+        }
+
+        .cc-video-popup-close {
+            cursor: pointer;
+            top: -40px;
+            right: 5px;
+            background: 0 0;
+            height: 30px;
+            aspect-ratio: 1 / 1;
+
+            &::before,
+            &::after {
+                position: absolute;
+                content: "";
+                height: 3px;
+                width: 100%;
+                border: 5px;
+                background: #c3daff;
+                -webkit-transition: .3s;
+                transition: all .3s ease 0s;
+            }
+
+            &::before {
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+
+            &:hover {
+                &::before,
+                &::after {
+                    background: red;
+                    box-shadow: 0 0 4px 1px #f4f8ff;
+                }
+            }
+        }
+    }
+
+    .video-frame-bg {
+        width: 100vw;
+        height: 0;
+        top: 0;
+        background: rgba(34, 36, 43, .7058823529);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        left: 0;
+        z-index: 2;
+        position: fixed;
+        -webkit-transition: .3s;
+        transition: all .3s ease;
+    }
 
 
+    &.cc-video-popup-active {
+        z-index: 99;
 
+        .cc-video-popup-box {
+            top: 10vh;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-frame-bg {
+            height: 100vh;
+        }
+    }
+}
 
 
 
