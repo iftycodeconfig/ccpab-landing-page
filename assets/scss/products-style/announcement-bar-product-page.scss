@@ -218,12 +218,17 @@ button{
 
 // cc-ab header   
 .cc-ab-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     overflow-x: clip;
-    position: relative;
     z-index: 99;
+    @extend .transition;
 
     .cc-ab-top-header{
         padding: 30px 0;
+        @extend .transition;
 
         @include breakpoint(1024) {
             padding: 24px 0;
@@ -389,8 +394,29 @@ button{
         }
 
     }
-}
 
+    &.sticky {
+        box-shadow: 0px 2px 20px 0px #297afe20;
+        background-color: #ffffff;
+
+        .cc-ab-top-header{
+            padding: 20px 0;
+
+            @include breakpoint(1024) {
+                padding: 16px 0;
+            }
+
+            @include breakpoint(768) {
+                padding: 14px 0;
+            }
+
+        }
+    }
+}
+.ab-header-gutter {
+    width: 100%;
+    height: var(--header-height);
+}
 
 .ab-banner{
     padding: 45px 0;
@@ -1471,7 +1497,7 @@ button{
 
 
     &.cc-video-popup-active {
-        z-index: 99;
+        z-index: 999;
 
         .cc-video-popup-box {
             top: 10vh;
